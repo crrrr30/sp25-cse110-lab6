@@ -82,11 +82,7 @@ function initFormHandler() {
 
 	// B3. TODO - Add an event listener for the 'submit' event, which fires when the
 	//            submit button is clicked
-	form.addEventListener("submit", (e) => {
-		e.preventDefault();
-
-		alert("submitted");
-
+	form.addEventListener("submit", () => {
 		// Steps B4-B9 will occur inside the event listener from step B3
 		// B4. TODO - Create a new FormData object from the <form> element reference above
 		const formData = Object.fromEntries(new FormData(form));
