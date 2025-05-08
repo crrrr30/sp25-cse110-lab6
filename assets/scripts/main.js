@@ -1,4 +1,11 @@
+// @ts-check
 // main.js
+
+import { RecipeCard } from "./RecipeCard.js";
+/**
+ * @import {RecipeCardData} from "./RecipeCard.js"
+ */
+
 
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
@@ -13,17 +20,19 @@ function init() {
 	initFormHandler();
 }
 
+// TODO: maybe consider error handling
 /**
  * Reads 'recipes' from localStorage and returns an array of
  * all of the recipes found (parsed, not in string form). If
  * nothing is found in localStorage for 'recipes', an empty array
  * is returned.
- * @returns {Array<Object>} An array of recipes found in localStorage
+ * @returns {Array<RecipeCardData>} An array of recipes found in localStorage
  */
 function getRecipesFromStorage() {
 	// A9. TODO - Complete the functionality as described in this function
 	//           header. It is possible in only a single line, but should
 	//           be no more than a few lines.
+	return JSON.parse(localStorage.getItem("recipes") ?? "");
 }
 
 /**
@@ -31,14 +40,21 @@ function getRecipesFromStorage() {
  * new <recipe-card> element, adds the recipe data to that card
  * using element.data = {...}, and then appends that new recipe
  * to <main>
- * @param {Array<Object>} recipes An array of recipes
+ * @param {Array<RecipeCardData>} recipes An array of recipes
  */
 function addRecipesToDocument(recipes) {
 	// A10. TODO - Get a reference to the <main> element
+	const main = document.getElementsByTagName("main")[0];
+
 	// A11. TODO - Loop through each of the recipes in the passed in array,
 	//            create a <recipe-card> element for each one, and populate
 	//            each <recipe-card> with that recipe data using element.data = ...
 	//            Append each element to <main>
+	recipes.forEach(recipe => {
+		const card = new RecipeCard();
+		card.data = recipe;
+		main.appendChild(card);
+	});
 }
 
 /**
