@@ -110,20 +110,20 @@ function initFormHandler() {
 		// B9. TODO - Get the recipes array from localStorage, add this new recipe to it, and
 		//            then save the recipes array back to localStorage
 		saveRecipesToStorage([...getRecipesFromStorage(), recipeObject]);
+	});
 
-		// B10. TODO - Get a reference to the "Clear Local Storage" button
-		const clearLocalStorageButton = [...document.getElementsByTagName("button")].filter(
-			button => button.textContent === "Clear Local Storage"
-		)[0];
+	// B10. TODO - Get a reference to the "Clear Local Storage" button
+	const clearLocalStorageButton = [...document.getElementsByTagName("button")].filter(
+		button => button.textContent === "Clear Local Storage"
+	)[0];
 
-		// B11. TODO - Add a click event listener to clear local storage button
-		clearLocalStorageButton.click = () => {
-			// Steps B12 & B13 will occur inside the event listener from step B11
-			// B12. TODO - Clear the local storage
-			saveRecipesToStorage([]);
+	// B11. TODO - Add a click event listener to clear local storage button
+	clearLocalStorageButton.addEventListener("click", () => {
+		// Steps B12 & B13 will occur inside the event listener from step B11
+		// B12. TODO - Clear the local storage
+		saveRecipesToStorage([]);
 
-			// B13. TODO - Delete the contents of <main>
-			main.innerHTML = "";
-		}
+		// B13. TODO - Delete the contents of <main>
+		main.innerHTML = "";
 	});
 }
